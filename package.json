@@ -4,7 +4,8 @@
   "description": "\"An API to manage a user persistence layer.\"",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js",
+    "test": "mocha tests/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,15 @@
   },
   "homepage": "https://github.com/WarlaxZ/holiday-extra-api-test#readme",
   "dependencies": {
-    "sequelize": "^4.3.1"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "sequelize": "^4.3.1",
+    "sqlite3": "^3.1.8"
   },
   "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
     "gulp-jshint": "^2.0.4",
     "jshint": "^2.9.5"
   }
