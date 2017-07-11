@@ -1,0 +1,32 @@
+{
+  "name": "holiday-extra-api-test",
+  "version": "1.0.0",
+  "description": "\"An API to manage a user persistence layer.\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarlaxZ/holiday-extra-api-test.git"
+  },
+  "keywords": [
+    "holiday",
+    "extra",
+    "api",
+    "test"
+  ],
+  "author": "Ashley Russell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarlaxZ/holiday-extra-api-test/issues"
+  },
+  "homepage": "https://github.com/WarlaxZ/holiday-extra-api-test#readme",
+  "dependencies": {
+    "sequelize": "^4.3.1"
+  },
+  "devDependencies": {
+    "gulp-jshint": "^2.0.4",
+    "jshint": "^2.9.5"
+  }
+}
