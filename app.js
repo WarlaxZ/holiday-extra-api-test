@@ -7,13 +7,18 @@ const User = models.User;
 const sequelize = models.sequelize;
 
 const app = express();
-app.use(bodyParser.json());                                     
-app.use(bodyParser.urlencoded({extended: true}));               
-app.use(bodyParser.text());                                    
-app.use(bodyParser.json({ type: 'application/json'})); 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.text());
+app.use(bodyParser.json({
+    type: 'application/json'
+}));
 
 function validateUserId(userId, res) {
-    if (isNaN(userId)) {
+    if(isNaN(userId)) {
         res.status(500).json({
             error: 'Invalid user ID supplied'
         });
@@ -24,8 +29,8 @@ function validateUserId(userId, res) {
 
 app.get('/', function(req, res) {
     res.send('All requests can be accessed under /user<br />' +
-        'POST to create, GET to retrieve all,<br />' + 
-        '/user/id to get a specific user,<br />' + 
+        'POST to create, GET to retrieve all,<br />' +
+        '/user/id to get a specific user,<br />' +
         'DELETE to delete funnily enough :)');
 });
 
@@ -50,7 +55,7 @@ app.post('/user', function(req, res) {
 });
 
 app.get('/user/:userId', function(req, res) {
-    if (!validateUserId(req.params.userId, res)) {
+    if(!validateUserId(req.params.userId, res)) {
         return;
     }
     User.findOne({
@@ -58,8 +63,8 @@ app.get('/user/:userId', function(req, res) {
             id: req.params.userId
         }
     }).then(user => {
-        if (user === null) {
-            throw Error("User not found");
+        if(user === null) {
+            throw Error('User not found');
         }
         res.json(user);
     }).catch(() => {
@@ -70,7 +75,7 @@ app.get('/user/:userId', function(req, res) {
 });
 
 app.delete('/user/:userId', function(req, res) {
-    if (!validateUserId(req.params.userId, res)) {
+    if(!validateUserId(req.params.userId, res)) {
         return;
     }
     User.destroy({
@@ -78,10 +83,12 @@ app.delete('/user/:userId', function(req, res) {
             id: req.params.userId
         }
     }).then(userFound => {
-        if (!userFound) {
-            throw Error("User not found");
+        if(!userFound) {
+            throw Error('User not found');
         }
-        res.status(200).json({message: "User Deleted"});
+        res.status(200).json({
+            message: 'User Deleted'
+        });
     }).catch(() => {
         res.status(404).json({
             error: 'Unable to find this user'
