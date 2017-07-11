@@ -295,6 +295,7 @@ describe('DELETE /user/userId', function() {
             .delete('/user/'+userToDelete.id)
             .end((err, res) => {
                 res.should.have.status(200);
+                res.body.message.should.eq('User Deleted');
                 done();
             });
         });

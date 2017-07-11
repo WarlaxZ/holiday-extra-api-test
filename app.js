@@ -77,8 +77,11 @@ app.delete('/user/:userId', function(req, res) {
         where: {
             id: req.params.userId
         }
-    }).then(() => {
-        res.status(200);
+    }).then(userFound => {
+        if (!userFound) {
+            throw Error("User not found");
+        }
+        res.status(200).json({message: "User Deleted"});
     }).catch(() => {
         res.status(404).json({
             error: 'Unable to find this user'
