@@ -1,6 +1,7 @@
 'use strict';
 
 const models = require('./models');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const User = models.User;
@@ -30,7 +31,8 @@ function validateUserId(userId, res) {
 app.get('/', function(req, res) {
     res.send('All requests can be accessed under /user<br />' +
         'POST to create, GET to retrieve all,<br />' +
-        '/user/id to get a specific user,<br />' +
+        'GET /user/id to get a specific user,<br />' +
+        'PUT /user/id to update a specific user,<br />' +
         'DELETE to delete funnily enough :)');
 });
 
@@ -49,6 +51,30 @@ app.post('/user', function(req, res) {
     }).catch(err => {
         res.status(500).json({
             error: 'There was an issue creating this user',
+            errors: err.errors
+        });
+    });
+});
+
+app.put('/user/:userId', function(req, res) {
+    if(!validateUserId(req.params.userId, res)) {
+        return;
+    }
+    let strippedUser = Object.assign({}, req.body);
+    delete strippedUser.id;
+
+    User.update(strippedUser, {
+        where: {
+            id: parseInt(req.params.userId, 10)
+        }
+    }).then(updatedUsers => {
+        if(updatedUsers[0] === 0) {
+            throw Error('User not found');
+        }
+        res.redirect('/user/' + req.params.userId);
+    }).catch(err => {
+        res.status(500).json({
+            error: 'There was an issue updating this user',
             errors: err.errors
         });
     });
