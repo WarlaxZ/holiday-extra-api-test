@@ -18,7 +18,7 @@ All API requests can be accessed via /user
 
 Note to start the project use "npm start".
 
-To run the unit tests and check code coverage use "npm test".
+To run the unit tests and check code coverage use "npm test". Note to run the server first to initialise the database.
 
 
-For the sake of this being a demo I have just used sqlite however obviously this wouldn't be done in a production system. And again in production you would probably want some level of access control over this, that said I believe this test was more to prove that you can write a correct and functional CRUD API.
+For the sake of this being a demo I have just used sqlite however obviously this wouldn't be done in a production system. And again in production you would probably want some level of access control over this, that said I believe this test was more to prove that you can write a correct and functional CRUD API. Also I haven't implimented the 'replace', as more often that not this is handled via the update function. I am happy to add it if requested however.

@@ -25,15 +25,6 @@ const exampleUsers = [{
     surname: 'Doe'
 }];
 
-describe('Test Database Connection before running tests', () => {
-    it('Connection Works', done => {
-        sequelize.authenticate().then(() => {
-            return sequelize.sync();
-        }).then(() => {
-            done()
-        });
-    });
-})
 
 describe('GET /user', () => {
     beforeEach(done => {
