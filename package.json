@@ -17,12 +17,6 @@
         "api",
         "test"
     ],
-    "author": "Ashley Russell",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/WarlaxZ/holiday-extra-api-test/issues"
-    },
-    "homepage": "https://github.com/WarlaxZ/holiday-extra-api-test#readme",
     "dependencies": {
         "body-parser": "^1.17.2",
         "express": "^4.15.3",
